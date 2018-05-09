@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>The User Guide for Location_Based Quiz App</title>
+</head>
+<body>
+<p>1. Start the Location_Based Quiz App</p>
+<p>Open the software Bitvise SSH Client 6.31 and type the following code in the terminal to connect to the right folder:</p>
+<p>cd /home/studentuser/code/server/uczlwj0</p>
+<p>Then type the following code to start the httpServer:</p>
+<p>node httpServer.js &    </p>
+<p>Next, you should connect to another folder by typing: </p>
+<p>cd /home/studentuser/code/quiz/uczlwj0</p>
+<p>And type the following code to start the PhoneGap:</p>
+<p>phonegap serve</p>
+<p>Finally,  type the following website in the browser explorer, you can see the interface of the Question Setting App and start to use it.</p>
+<p>http://developer.cege.ucl.ac.uk:31275/</p>
+<p>2. Track the location of the user</p>
+<p>You can find a drop-down list on the bottom of the App. You can track your location by pressing the button of "Track Location".</p>
+<p>Then you can see a marker is placed on the map which represents your position.</p>
+<p>Also your coordinates of your position is shown on the bottom of the App.</p>
+<p>3. Answer the question</p>
+<p>Once you are close to the location within a certain distance, a quiz will be shown on the sidebar.</p>
+<p>This is a question concerned with the location.</p>
+<p>You can select the answer by clicking the radio button, and then submit your answer.</p>
+<p>Your phone ID and your answer will be stored in the App.</p>
+<p>4. Check the answer</p>
+<p>You can click the "Show Correct Answer" button to check whether your answer is right or wrong.</p>
+<p>If you are wrong, the App will tell you the right answer.</p>
+<p>5. Log out the App</p>
+<p>It would be better if you can close the PhoneGap by typing the following code in the terminal of Bitvise SSH Client 6.31:</p>
+<p>“Ctrl” + C</p>
+<p>Do not forget to close httpServer either:</p>
+<p>fg 1</p>
+<p>“Ctrl” + C</p>
+</body>
+</html>

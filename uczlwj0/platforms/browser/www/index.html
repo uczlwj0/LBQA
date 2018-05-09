@@ -1,0 +1,109 @@
+<!doctype html>
+<!-- uczlwj0 - Code Source: the code is adapted from a index.html downloaded from a website: https://getmdl.io/templates/index.html and Claire's Web GIS practical -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<!--uczlwj0 - change the title of the webpage-->
+    <title>Location_Based-Quiz-App</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+	<!--uczlwj0 - load the map -->
+	<!-- the following links add the CSS and Javascript required for the Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="crossorigin=""></script>
+    <!-- the following CSS is used to set the size of the Map -->
+    <style type="text/css">
+    #mapid { height: 180px; }
+    </style>
+	
+  </head>
+  <body>
+    
+
+	
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--black mdl-color-text--white">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title" id="showLocation">Track Location...</span>
+          <div class="mdl-layout-spacer"></div>
+		  
+		  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item" id="showLocation" href="" onclick='trackLocation();return false;'>Track Location</li>
+          </ul>
+		  
+        </div>
+      </header>
+	  
+	        <div class="demo-drawer mdl-layout__drawer mdl-color--black mdl-color-text--white">
+        <header class="demo-drawer-header">
+		<!-- uczlwj0 - change the left-top picture-->
+          <img src="images/ucl.png" class="demo-drawer">
+          <div class="demo-avatar-dropdown">
+            <span>Location_Based-Quiz-App</span>
+            <div class="mdl-layout-spacer"></div>
+          </div>
+        </header>
+		<!-- uczlwj0 - change the left side content-->
+        <nav class="demo-navigation mdl-navigation mdl-color--black">
+		<!-- uczlwj0 - this part of the code is adapted from Claire's practical week 6 and 7-->
+		  <div id="question_id">QuestionID(Unique)</div> 
+		  <div id="question">Question</div>
+          <div id="answer_1">AnswerA</div><input type="radio" name="answer" value="a" id="answer1"><br/>              
+          <div id="answer_2">AnswerB</div><input type="radio" name="answer" value="b" id="answer2"><br/>                   
+		  <div id="answer_3">AnswerC</div><input type="radio" name="answer" value="c" id="answer3"><br/>   
+          <div id="answer_4">AnswerD</div><input type="radio" name="answer" value="d" id="answer4"><br/>   
+		  <!-- uczlwj0 - submit answer button-->
+		  <br />
+          <p> <button id="SubmitAnswer" onclick="submitAnswer()">Submit Answer</button> </p>
+          <!-- uczlwj0 - show the result of submit answer-->
+		  <br />
+          <p> <div id="dataUploadResult">...</div> </p>
+        </nav>
+      </div>
+	  
+      <main class="mdl-layout__content mdl-color--white">
+        <div class="mdl-grid demo-content">
+          <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+		  <!-- change the main content of the web-->
+		  <div id="mapid" style="width: 2500px; height: 800px;"></div>	
+          </div>
+        </div>
+      </main>
+    </div>
+      
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<script src="./js/appActivity.js"></script>
+	<script src="./js/submitAnswer.js"></script>
+  </body>
+</html>
